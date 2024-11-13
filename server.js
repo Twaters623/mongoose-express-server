@@ -19,7 +19,6 @@ const getConnection = async (dbName) => {
   console.log(`getConnection called with dbName: `, dbName);
 
   if (!connections[dbName]) {
-    js;
     connections[dbName] = await mongoose.createConnection(
       process.env.MONGO_URI,
       { dbName: dbName }
@@ -48,14 +47,13 @@ const getModel = async (dbName, collectionName) => {
   return models[modelKey];
 };
 
-app.get("/find/:database/:connection", async (req, res) => {
+app.get("/find/:database/:collection", async (req, res) => {
   try {
     const { database, collection } = req.params;
-    const Model = await getModel(database, connection);
-    const documents = await Model.find({}).lean;
+    const Model = await getModel(database, collection);
+    const documents = await Model.find({}).lean();
     console.log(`query exeucted, document count is ${documents.length}`);
     res.status(200).json(documents);
-    return;
   } catch (err) {
     console.error(`Error in GET route:`, err);
     res.status(500).json({ error: err.message });
