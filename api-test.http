@@ -8,3 +8,5 @@
 GET {{domain}}:{{port}}/find/{{database}}/{{collection}}
 Content-Type: application/json
 
+DELETE {{domain}}:{{port}}/delete/{{database}}/{{collection}}
+Content-Type: application/json
