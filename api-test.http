@@ -8,5 +8,14 @@
 GET {{domain}}:{{port}}/find/{{database}}/{{collection}}
 Content-Type: application/json
 
-DELETE {{domain}}:{{port}}/delete/{{database}}/{{collection}}
+###
+POST {{domain}}:{{port}}/insert/{{database}}/{{collection}}
+Content-Type: application/json
+
+{"item": 'steak',
+"food_group": 'protein'}
+
+@delete-id = "" 
+###
+DELETE {{domain}}:{{port}}/{{database}}/{{collection}}/{{delete-id}}
 Content-Type: application/json
